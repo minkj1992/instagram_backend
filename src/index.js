@@ -1,21 +1,9 @@
 import { ApolloServer } from "apollo-server";
-import { gql } from "apollo-server";
-import fs from "fs";
-import path from "path";
-
 import prisma from "./prisma";
-import resolvers from "./resolvers";
-
-const graphqlSchema = fs.readFileSync(
-  path.join(__dirname, "schema.graphql"),
-  "utf8"
-);
+import schema from "./schema";
 
 const server = new ApolloServer({
-  typeDefs: gql`
-    ${graphqlSchema}
-  `,
-  resolvers,
+  schema,
   context: ({ req }) => ({
     ...req,
     prisma,
