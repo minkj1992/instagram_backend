@@ -12,4 +12,20 @@ npm i nodemon --save-dev
 npm install --save-dev @babel/core
 npm install @babel/preset-env --save-dev
 npm i @babel/node --save-dev
+
+npm i @prisma/cli -D
+npx prisma init
+npx prisma migrate dev --preview-feature
+npx prisma generate
+npx prisma studio # check model with prisma studio web
+```
+
+## db(postgress) setup
+
+1. [postgress SQL v.13](https://postgresapp.com/downloads.html)
+
+```
+$ psql
+
+# CREATE DATABASE instagram;
 ```
