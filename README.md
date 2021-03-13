@@ -6,5 +6,5 @@
 
 ```
 npm i apollo-server graphql
-
+npm i nodemon --save-dev
 ```
