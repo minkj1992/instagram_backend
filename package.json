@@ -4,7 +4,7 @@
   "description": "instagram_backend ver 2",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run migrate && npm run generate && nodemon --exec babel-node server",
+    "dev": "npm run migrate && npm run generate && nodemon --exec babel-node src/index",
     "migrate": "npx prisma migrate dev --preview-feature",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio"
