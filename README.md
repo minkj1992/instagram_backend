@@ -1,18 +1,16 @@
 # instagram_backend
 > instagram_backend ver 2
 
-## [features] `User`
-- [ ] register
+## Features for `User`
+- [v] register
 - [ ] login
-- [ ] see profile
+- [v] see profile
 - [ ] edit profile
   - [ ] change Avatar (Image Upload)
 - [ ] follow/unfollow user
 
 
-
-
-## setup
+## Project Set up
 
 ```
 npm i apollo-server graphql
@@ -30,11 +28,11 @@ npx prisma generate
 npx prisma studio # check model with prisma studio web
 
 npm i graphql-tools
-
 npm i dotenv
+npm i bcryptjs
 ```
 
-## db(postgress) setup
+## Db(postgress) Set up
 
 1. [postgress SQL v.13](https://postgresapp.com/downloads.html)
 
