@@ -1,6 +1,16 @@
 # instagram_backend
 > instagram_backend ver 2
 
+## [features] `User`
+- [ ] register
+- [ ] login
+- [ ] see profile
+- [ ] edit profile
+  - [ ] change Avatar (Image Upload)
+- [ ] follow/unfollow user
+
+
+
 
 ## setup
 
