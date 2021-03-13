@@ -4,7 +4,7 @@
   "description": "instagram_backend ver 2",
   "main": "index.js",
   "scripts": {
-    "dev": ""
+    "dev": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/minkj1992/instagram_backend/issues"
   },
-  "homepage": "https://github.com/minkj1992/instagram_backend#readme"
+  "homepage": "https://github.com/minkj1992/instagram_backend#readme",
+  "dependencies": {
+    "apollo-server": "^2.21.1",
+    "graphql": "^15.5.0"
+  }
 }
