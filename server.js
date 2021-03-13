@@ -13,34 +13,26 @@ const typeDefs = gql`
   }
   type Query {
     movies: [Movie]
-    movie: Movie
+    movie(id: Int!): Movie
   }
   type Mutation {
     createMovie(title: String!, year: Int!, genre: String): Movie
-    updateMovie(title: String!): Movie
+    updateMovie(id: Int!, title: String, year: Int, genre: String): Movie
+    deleteMovie(id: Int!): Movie
   }
 `;
 
 const resolvers = {
   Query: {
     movies: () => prisma.movie.findMany(),
-    movie: () => ({ title: "dummy movie", year: 2021 }),
+    movie: (id) => prisma.movie.findUnique({ where: { id } }),
   },
   Mutation: {
-    createMovie: async (_, { title, year, genre }) => {
-      return await prisma.movie.create({
-        data: {
-          title,
-          year,
-          genre,
-        },
-      });
-    },
-
-    updateMovie: (_, { title }) => {
-      console.log(title);
-      return true;
-    },
+    createMovie: async (_, { ...data }) => await prisma.movie.create({ data }),
+    updateMovie: async (_, { id, ...data }) =>
+      await prisma.movie.update({ where: { id }, data }),
+    deleteMovie: async (_, { id }) =>
+      await prisma.movie.delete({ where: { id } }),
   },
 };
 
