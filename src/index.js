@@ -1,3 +1,4 @@
+require("dotenv").config();
 import { ApolloServer } from "apollo-server";
 import prisma from "./prisma";
 import schema from "./schema";
@@ -10,4 +11,8 @@ const server = new ApolloServer({
   }),
 });
 
-server.listen().then(({ url }) => console.log(`Server is running on ${url}`));
+const PORT = process.env.PORT || 4000;
+
+server
+  .listen(PORT)
+  .then(({ url }) => console.log(`Server is running on ${url}`));

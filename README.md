@@ -20,6 +20,8 @@ npx prisma generate
 npx prisma studio # check model with prisma studio web
 
 npm i graphql-tools
+
+npm i dotenv
 ```
 
 ## db(postgress) setup
