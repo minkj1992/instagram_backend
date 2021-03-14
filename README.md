@@ -3,7 +3,7 @@
 
 ## Features for `User`
 - [x] register
-- [ ] login
+- [x] login
 - [x] see profile
 - [ ] edit profile
   - [ ] change Avatar (Image Upload)
@@ -30,6 +30,7 @@ npx prisma studio # check model with prisma studio web
 npm i graphql-tools
 npm i dotenv
 npm i bcryptjs
+npm i jsonwebtoken
 ```
 
 ## Db(postgress) Set up
@@ -41,3 +42,7 @@ $ psql
 
 # CREATE DATABASE instagram;
 ```
+
+## reference
+
+- [random password generator](https://randomkeygen.com/)
