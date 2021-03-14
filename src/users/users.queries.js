@@ -1,3 +1,12 @@
+import { prisma } from "@prisma/client";
+
 export default {
-  Query: {},
+  Query: {
+    account: (_, { username }, { prisma }) =>
+      prisma.user.findUnique({
+        where: {
+          username,
+        },
+      }),
+  },
 };

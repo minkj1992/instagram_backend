@@ -23,12 +23,14 @@ export default {
 
       const existingUser = await prisma.user.findFirst(q);
       if (existingUser) {
-        return ValidationError(`User already existed [${username}, ${email}] `);
+        return new ValidationError(
+          `User already existed [${username}, ${email}] `
+        );
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      return prisma.user.create({
+      return await prisma.user.create({
         data: {
           firstName,
           lastName,
