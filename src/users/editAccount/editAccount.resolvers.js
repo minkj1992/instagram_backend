@@ -1,15 +1,18 @@
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export default {
   Mutation: {
     editAccount: async (
       _,
-      { firstName, lastName, username, email, password: newPassword },
+      { firstName, lastName, username, email, password: newPassword, token },
       { prisma }
     ) => {
+      const { id } = await jwt.verify(token, process.env.SECRET_KEY);
+
       const updatedUser = await prisma.user.update({
         where: {
-          id: 3,
+          id,
         },
         data: {
           firstName,
