@@ -1,4 +1,3 @@
-import { ValidationError } from "apollo-server-errors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
@@ -24,9 +23,10 @@ export default {
 
       const existingUser = await prisma.user.findFirst(q);
       if (existingUser) {
-        return new ValidationError(
-          `User already existed [${username}, ${email}] `
-        );
+        return {
+          ok: false,
+          error: `User already existed [${username}, ${email}] `,
+        };
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
