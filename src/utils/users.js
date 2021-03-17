@@ -29,6 +29,8 @@ async function _getUserId(req) {
 export async function getUser(prisma, req) {
   const reqType = req.body.operationName || req.body.query;
   console.log(reqType);
+  if (reqType === "IntrospectionQuery") return null;
+
   try {
     const userId = await _getUserId(req);
     const user = await prisma.user.findUnique({ where: { id: userId } });
@@ -38,11 +40,14 @@ export async function getUser(prisma, req) {
   }
 }
 
-export const protectAuthResolver = (user) => {
-  if (!user) {
-    return {
-      ok: false,
-      error: "You need to login",
-    };
+export const protectAuthResolver = (resolver) => (
+  root,
+  args,
+  context,
+  info
+) => {
+  if (!context.loggedInUser) {
+    return { ok: false, error: "Please log in to perform this action" };
   }
+  return resolver(root, args, context, info);
 };

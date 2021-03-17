@@ -10,7 +10,6 @@ const server = new ApolloServer({
     ...req,
     prisma,
     loggedInUser: await getUser(prisma, req),
-    protectAuthResolver,
   }),
   subscriptions: false,
 });
