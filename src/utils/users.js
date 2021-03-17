@@ -37,3 +37,12 @@ export async function getUser(prisma, req) {
     return null;
   }
 }
+
+export const protectAuthResolver = (user) => {
+  if (!user) {
+    return {
+      ok: false,
+      error: "You need to login",
+    };
+  }
+};

@@ -5,8 +5,9 @@ export default {
     editAccount: async (
       _,
       { firstName, lastName, username, email, password: newPassword },
-      { prisma, loggedInUser: user }
+      { prisma, loggedInUser: user, protectAuthResolver }
     ) => {
+      protectAuthResolver(user);
       const updatedUser = await prisma.user.update({
         where: {
           id: user.id,
