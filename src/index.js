@@ -2,15 +2,16 @@ require("dotenv").config();
 import { ApolloServer } from "apollo-server";
 import prisma from "./prisma";
 import schema from "./schema";
-import { getUserId } from "./utils";
+import { getUser } from "./utils/users";
 
 const server = new ApolloServer({
   schema,
-  context: ({ req }) => ({
+  context: async ({ req }) => ({
     ...req,
     prisma,
-    userId: req && req.headers.authorization ? getUserId(req) : null,
+    loggedInUser: await getUser(prisma, req),
   }),
+  subscriptions: false,
 });
 
 const PORT = process.env.PORT || 4000;

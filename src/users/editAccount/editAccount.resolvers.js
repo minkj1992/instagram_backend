@@ -5,11 +5,11 @@ export default {
     editAccount: async (
       _,
       { firstName, lastName, username, email, password: newPassword },
-      { prisma, userId }
+      { prisma, loggedInUser: user }
     ) => {
       const updatedUser = await prisma.user.update({
         where: {
-          id: userId,
+          id: user.id,
         },
         data: {
           firstName,
