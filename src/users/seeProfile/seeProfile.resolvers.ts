@@ -1,4 +1,6 @@
-export default {
+import { Resolvers } from "../../types";
+
+const resolvers: Resolvers = {
   Query: {
     seeProfile: async (_, { username }, { prisma }) => {
       return await prisma.user.findUnique({
@@ -9,3 +11,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

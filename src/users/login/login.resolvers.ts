@@ -1,14 +1,15 @@
-import * as jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
+import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcryptjs';
+import {Resolvers} from '../../types';
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
-    login: async (_, { username, password }, { prisma }) => {
-      const user = await prisma.user.findFirst({ where: { username } });
+    login: async (_, {username, password}, {prisma}) => {
+      const user = await prisma.user.findFirst({where: {username}});
       if (!user) {
         return {
           ok: false,
-          error: "User not found.",
+          error: 'User not found.',
         };
       }
       // check password
@@ -16,7 +17,7 @@ export default {
       if (!passwordOk) {
         return {
           ok: false,
-          error: "Incorrect password.",
+          error: 'Incorrect password.',
         };
       }
 
@@ -25,7 +26,7 @@ export default {
         {
           id: user.id,
         },
-        process.env.SECRET_KEY
+        process.env.SECRET_KEY as jwt.Secret
       );
       return {
         ok: true,
@@ -34,3 +35,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

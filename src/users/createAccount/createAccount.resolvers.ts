@@ -1,11 +1,12 @@
-import bcrypt from "bcryptjs";
+import * as bcrypt from 'bcryptjs';
+import {Resolvers} from '../../types';
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
     createAccount: async (
       _,
-      { firstName, lastName, username, email, password },
-      { prisma }
+      {firstName, lastName, username, email, password},
+      {prisma}
     ) => {
       const q = {
         where: {
@@ -47,3 +48,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

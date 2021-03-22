@@ -1,14 +1,18 @@
-import bcrypt from "bcryptjs";
-import { protectAuthResolver } from "../../utils/users";
+import * as bcrypt from 'bcryptjs';
+import {Resolvers} from '../../types';
+import {protectAuthResolver} from '../../utils/users';
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
     editAccount: protectAuthResolver(
       async (
         _,
-        { firstName, lastName, username, email, password: newPassword },
-        { prisma, loggedInUser }
+        {firstName, lastName, username, email, password: newPassword},
+        {prisma, loggedInUser}
       ) => {
+        if (!loggedInUser) {
+          throw new Error();
+        }
         const updatedUser = await prisma.user.update({
           where: {
             id: loggedInUser.id,
@@ -31,10 +35,12 @@ export default {
         } else {
           return {
             ok: false,
-            error: "Could not update profile",
+            error: 'Could not update profile',
           };
         }
       }
     ),
   },
 };
+
+export default resolvers;

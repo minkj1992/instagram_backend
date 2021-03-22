@@ -1,14 +1,15 @@
 # instagram_backend
+
 > instagram_backend ver 2
 
 ## Features for `User`
+
 - [x] register
 - [x] login
 - [x] see profile
 - [ ] edit profile
   - [ ] change Avatar (Image Upload)
 - [ ] follow/unfollow user
-
 
 ## Project Set up
 
@@ -31,6 +32,8 @@ npm i graphql-tools
 npm i dotenv
 npm i bcryptjs
 npm i jsonwebtoken
+
+npx gts init
 ```
 
 ## Db(postgress) Set up
