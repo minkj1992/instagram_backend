@@ -13,12 +13,7 @@ export type ResolverPayload = {
   info: any;
 };
 
-export type Resolver = (
-  root: any,
-  args: any,
-  context: Context,
-  info: any
-) => any;
+export type Resolver = (_: ResolverPayload) => any;
 
 export type Resolvers = {
   [key: string]: {
