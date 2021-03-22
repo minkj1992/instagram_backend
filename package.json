@@ -4,7 +4,7 @@
   "description": "instagram_backend ver 2",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run migrate && npm run generate && nodemon --exec babel-node src/index",
+    "dev": "npm run migrate && npm run generate && nodemon --exec ts-node src/index --ext ts,js",
     "migrate": "npx prisma migrate dev --preview-feature",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio"
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/minkj1992/instagram_backend#readme",
   "dependencies": {
-    "@prisma/client": "^2.18.0",
+    "@prisma/client": "^2.19.0",
     "apollo-server": "^2.21.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
@@ -35,6 +35,8 @@
     "@babel/preset-env": "^7.13.10",
     "@prisma/cli": "^2.18.0",
     "nodemon": "^2.0.7",
-    "prisma": "^2.18.0"
+    "prisma": "^2.19.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   }
 }

@@ -19,8 +19,8 @@ async function _getUserId(req) {
       if (!token) {
         throw new Error("No token found");
       }
-      const { id } = await _getTokenPayload(token);
-      return id;
+      const verifiedToken: any = await _getTokenPayload(token);
+      return "id" in verifiedToken ? verifiedToken["id"] : null;
     }
   }
   throw new Error("Not authenticated");
