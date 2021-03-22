@@ -1,10 +1,13 @@
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcryptjs';
-import {Resolvers} from '../../types';
+import {Resolvers, ResolverPayload} from '../../types';
 
 const resolvers: Resolvers = {
   Mutation: {
-    login: async (_, {username, password}, {prisma}) => {
+    login: async ({
+      args: {username, password},
+      context: {prisma},
+    }: ResolverPayload) => {
       const user = await prisma.user.findFirst({where: {username}});
       if (!user) {
         return {

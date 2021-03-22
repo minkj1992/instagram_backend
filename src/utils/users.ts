@@ -1,7 +1,7 @@
 import express = require('express');
-import {Prisma, PrismaClient} from '@prisma/client';
+import {PrismaClient} from '@prisma/client';
 import * as jwt from 'jsonwebtoken';
-import {Resolver, Context} from '../types';
+import {Context, Resolver} from '../types';
 
 async function _getTokenPayload(token: string): Promise<string | object> {
   return jwt.verify(token, process.env.SECRET_KEY as jwt.Secret);
@@ -39,14 +39,11 @@ export async function getUser(prisma: PrismaClient, req: express.Request) {
   return user;
 }
 
-export const protectAuthResolver = (resolver: Resolver) => (
-  root: any,
-  args: any,
-  context: Context,
-  info: any
-) => {
-  if (!context.loggedInUser) {
-    return {ok: false, error: 'Please log in to perform this action'};
-  }
-  return resolver(root, args, context, info);
-};
+export function protectAuthResolver(resolver: Resolver) {
+  return function (root: any, args: any, context: Context, info: any) {
+    if (!context.loggedInUser) {
+      return {ok: false, error: 'Please log in to perform this action'};
+    }
+    return resolver(root, args, context, info);
+  };
+}

@@ -6,6 +6,13 @@ type Context = {
   loggedInUser?: User;
 };
 
+export type ResolverPayload = {
+  root: any;
+  args: any;
+  context: Context;
+  info: any;
+};
+
 export type Resolver = (
   root: any,
   args: any,
