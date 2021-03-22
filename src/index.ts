@@ -1,12 +1,14 @@
 require('dotenv').config();
+import express = require('express');
 import {ApolloServer} from 'apollo-server';
+
 import prisma from './prisma';
 import schema from './schema';
 import {getUser} from './utils/users';
 
 const server = new ApolloServer({
   schema,
-  context: async ({req}) => ({
+  context: async (req: express.Request) => ({
     ...req,
     prisma,
     loggedInUser: await getUser(prisma, req),

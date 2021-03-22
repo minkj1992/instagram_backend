@@ -3,7 +3,16 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "build",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "alwaysStrict": true,
+    "target": "es6",
+    "typeRoots": ["./node_modules/@types"]
   },
+
   "include": ["src/**/*.ts", "test/**/*.ts"]
 }
