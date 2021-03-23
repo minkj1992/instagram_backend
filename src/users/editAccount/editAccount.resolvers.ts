@@ -3,7 +3,7 @@ import {ResolverPayload, Resolvers} from '../../types';
 import {protectAuthResolver} from '../../utils/users';
 
 const editAccount = async ({args, context}: ResolverPayload) => {
-  const {firstName, lastName, username, email, password} = args;
+  const {firstName, lastName, username, email, password, bio} = args;
   const {prisma, loggedInUser} = context;
   if (!loggedInUser) {
     throw new Error();
@@ -16,10 +16,11 @@ const editAccount = async ({args, context}: ResolverPayload) => {
       firstName,
       lastName,
       username,
-      email,
       ...(password && {
         password: await bcrypt.hash(password, 10),
       }),
+      email,
+      bio,
     },
   });
 

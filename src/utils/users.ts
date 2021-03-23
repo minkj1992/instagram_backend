@@ -29,9 +29,9 @@ async function _getUserId(req: express.Request) {
 }
 
 export async function getUser(prisma: PrismaClient, req: express.Request) {
-  const reqType = req.body.operationName || req.body.query;
-  console.log(reqType);
-  if (reqType === 'IntrospectionQuery') return null;
+  const reqType = req?.body?.operationName || req?.body?.query;
+
+  if (reqType === 'IntrospectionQuery' || !reqType) return null;
 
   const userId = await _getUserId(req);
   if (!userId) return null;
