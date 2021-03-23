@@ -1,9 +1,13 @@
 import * as bcrypt from 'bcryptjs';
 import {ResolverPayload, Resolvers} from '../../types';
 
-const createAccount = async ({args, context}: ResolverPayload) => {
-  const {firstName, lastName, username, email, password} = args;
-  const {prisma} = context;
+const createAccount = async (...payload: ResolverPayload) => {
+  const [
+    _,
+    {firstName, lastName, username, email, password},
+    {prisma},
+  ] = payload;
+
   const q = {
     where: {
       OR: [

@@ -6,14 +6,14 @@ type Context = {
   loggedInUser?: User;
 };
 
-export type ResolverPayload = {
-  root: any;
-  args: any;
-  context: Context;
-  info: any;
-};
+export type ResolverPayload = [
+  root: any,
+  args: any,
+  context: Context,
+  info: any
+];
 
-export type Resolver = (_: ResolverPayload) => any;
+export type Resolver = (...payload: ResolverPayload) => any;
 
 export type Resolvers = {
   [key: string]: {

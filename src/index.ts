@@ -9,15 +9,15 @@ import {getUser} from './utils/users';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  formatError: err => {
-    console.log(err.extensions?.exception);
-    return err;
-  },
   context: async (req: express.Request) => ({
     ...req,
     prisma,
     loggedInUser: await getUser(prisma, req),
   }),
+  formatError: err => {
+    console.log(err?.extensions?.exception);
+    return err;
+  },
 });
 
 const PORT = process.env.PORT || 4000;

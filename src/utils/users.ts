@@ -40,10 +40,11 @@ export async function getUser(prisma: PrismaClient, req: express.Request) {
 }
 
 export function protectAuthResolver(resolver: Resolver) {
-  return function (payload: ResolverPayload) {
-    if (!payload.context.loggedInUser) {
+  return function (...payload: ResolverPayload) {
+    const [_, __, context] = payload;
+    if (!context.loggedInUser) {
       return {ok: false, error: 'Please log in to perform this action'};
     }
-    return resolver(payload);
+    return resolver(...payload);
   };
 }

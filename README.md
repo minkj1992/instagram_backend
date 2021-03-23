@@ -49,3 +49,4 @@ $ psql
 ## reference
 
 - [random password generator](https://randomkeygen.com/)
+- [graphql upload test with altair](https://altair.sirmuel.design/)

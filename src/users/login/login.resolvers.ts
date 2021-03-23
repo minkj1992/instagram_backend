@@ -4,10 +4,9 @@ import {Resolvers, ResolverPayload} from '../../types';
 
 const resolvers: Resolvers = {
   Mutation: {
-    login: async ({
-      args: {username, password},
-      context: {prisma},
-    }: ResolverPayload) => {
+    login: async (...payload: ResolverPayload) => {
+      const [_, {username, password}, {prisma}] = payload;
+
       const user = await prisma.user.findFirst({where: {username}});
       if (!user) {
         return {

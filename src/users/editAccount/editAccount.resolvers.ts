@@ -2,9 +2,13 @@ import * as bcrypt from 'bcryptjs';
 import {ResolverPayload, Resolvers} from '../../types';
 import {protectAuthResolver} from '../../utils/users';
 
-const editAccount = async ({args, context}: ResolverPayload) => {
-  const {firstName, lastName, username, email, password, bio} = args;
-  const {prisma, loggedInUser} = context;
+const editAccount = async (...payload: ResolverPayload) => {
+  const [
+    _,
+    {firstName, lastName, username, email, password, bio},
+    {prisma, loggedInUser},
+  ] = payload;
+
   if (!loggedInUser) {
     throw new Error();
   }
