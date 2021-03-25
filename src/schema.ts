@@ -1,3 +1,4 @@
+/* eslint-disable node/no-extraneous-import */
 import * as path from 'path';
 import {loadFilesSync} from '@graphql-tools/load-files';
 import {mergeResolvers, mergeTypeDefs} from '@graphql-tools/merge';

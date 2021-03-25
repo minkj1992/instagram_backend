@@ -1,4 +1,4 @@
-import {gql} from 'apollo-server-core';
+import {gql} from 'apollo-server';
 
 export default gql`
   type EditAccountResult {
@@ -14,6 +14,7 @@ export default gql`
       email: String
       password: String
       bio: String
+      avatar: Upload
     ): EditAccountResult!
   }
 `;

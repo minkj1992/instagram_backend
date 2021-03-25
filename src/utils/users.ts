@@ -13,24 +13,24 @@ async function _getTokenPayload(token: string): Promise<string | object> {
  * @param {*} authToken : Authorization": "Bearer-TOKEN"
  */
 
-async function _getUserId(req: express.Request) {
-  if (req) {
+async function _getUserId(req: any) {
+  if (req?.headers?.authorization) {
     const authHeader = req.headers.authorization;
+
     if (authHeader) {
       const token = authHeader.replace('Bearer ', '');
       if (!token) {
-        throw new Error('No token found');
+        return null;
       }
       const verifiedToken = await _getTokenPayload(token);
       return verifiedToken ? (verifiedToken as {id: string})['id'] : null;
     }
   }
-  throw new Error('Not authenticated');
+  return null;
 }
 
 export async function getUser(prisma: PrismaClient, req: express.Request) {
   const reqType = req?.body?.operationName || req?.body?.query;
-
   if (reqType === 'IntrospectionQuery' || !reqType) return null;
 
   const userId = await _getUserId(req);

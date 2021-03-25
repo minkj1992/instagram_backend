@@ -5,9 +5,13 @@ import {protectAuthResolver} from '../../utils/users';
 const editAccount = async (...payload: ResolverPayload) => {
   const [
     _,
-    {firstName, lastName, username, email, password, bio},
+    {firstName, lastName, username, email, password, bio, avatar},
     {prisma, loggedInUser},
   ] = payload;
+
+  const {filename, createReadStream} = await avatar;
+  const stream = createReadStream();
+  console.log(stream);
 
   if (!loggedInUser) {
     throw new Error();

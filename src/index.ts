@@ -9,7 +9,7 @@ import {getUser} from './utils/users';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: async (req: express.Request) => ({
+  context: async ({req}) => ({
     ...req,
     prisma,
     loggedInUser: await getUser(prisma, req),
