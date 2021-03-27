@@ -6,6 +6,10 @@ const seeProfile = async (...payload: ResolverPayload) => {
     where: {
       username,
     },
+    include: {
+      following: true,
+      followers: true,
+    },
   });
 };
 
