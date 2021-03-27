@@ -4,7 +4,7 @@
   "description": "instagram_backend ver 2",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+    "preinstall": "npx npm-force-resolutions@0.0.3",
     "dev": "npm run migrate && npm run generate && nodemon --exec ts-node src/index --ext ts,js",
     "migrate": "npx prisma migrate dev --preview-feature",
     "generate": "npx prisma generate",
