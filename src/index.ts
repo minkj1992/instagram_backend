@@ -1,10 +1,16 @@
 require('dotenv').config();
-import express = require('express');
-import {ApolloServer} from 'apollo-server';
+import express from 'express';
+import logger from 'morgan';
+import {ApolloServer} from 'apollo-server-express';
 
 import prisma from './prisma';
 import {typeDefs, resolvers} from './schema';
 import {getUser} from './utils/users';
+
+const PORT = process.env.PORT || 4000;
+
+const app = express();
+app.use(logger('tiny'));
 
 const server = new ApolloServer({
   typeDefs,
@@ -19,7 +25,7 @@ const server = new ApolloServer({
     return err;
   },
 });
-
-const PORT = process.env.PORT || 4000;
-
-server.listen(PORT).then(({url}) => console.log(`Server is running on ${url}`));
+server.applyMiddleware({app});
+app.listen({port: PORT}, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

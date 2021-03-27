@@ -31,11 +31,14 @@
   "dependencies": {
     "@prisma/client": "^2.19.0",
     "apollo-server": "^2.21.1",
+    "apollo-server-express": "^2.22.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -46,6 +49,7 @@
     "@types/express": "^4.17.11",
     "@types/graphql": "^14.5.0",
     "@types/jsonwebtoken": "^8.5.1",
+    "@types/morgan": "^1.9.2",
     "@types/node": "^14.11.2",
     "gts": "^3.1.0",
     "nodemon": "^2.0.7",
