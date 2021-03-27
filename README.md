@@ -4,12 +4,15 @@
 
 ## Features for `User`
 
-- [x] register
-- [x] login
-- [x] see profile
-- [ ] edit profile
-  - [ ] change Avatar (Image Upload)
-- [ ] follow/unfollow user
+- [x] Register
+- [x] Login
+- [x] See profile
+- [x] Edit profile
+  - [x] Change Avatar (Image Upload)
+- [ ] Follow/Unfollow user
+- [ ] Search Users
+- [ ] See Followers
+- [ ] See Following
 
 ## Project Set up
 
