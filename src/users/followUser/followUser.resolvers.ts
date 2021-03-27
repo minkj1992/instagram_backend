@@ -3,7 +3,10 @@ import {protectAuthResolver} from '../../utils/users';
 
 const followUser = async (...payload: ResolverPayload) => {
   const [_, {username}, {prisma, loggedInUser}] = payload;
-  const ok = await prisma.user.findUnique({where: {username}});
+  const ok = await prisma.user.findUnique({
+    where: {username},
+    select: {id: true},
+  });
   if (!ok) {
     return {ok: false, error: `There is no matched ${username} username`};
   }

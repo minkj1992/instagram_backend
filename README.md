@@ -10,10 +10,14 @@
 - [x] Edit profile
   - [x] Change Avatar (Image Upload)
 - [x] Follow user
-- [ ] Unfollow User
+- [x] Unfollow User
+- [x] See Followers
+- [x] See Following
 - [ ] Search Users
-- [ ] See Followers
-- [ ] See Following
+- [ ] Pagination Follows
+  - [x] offset pagination
+  - [ ] cursor pagination
+- [ ] Count Follows
 
 ## Project Set up
 
