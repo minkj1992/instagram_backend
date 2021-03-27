@@ -1,6 +1,9 @@
+import fs from 'fs';
 import * as bcrypt from 'bcryptjs';
 import {ResolverPayload, Resolvers} from '../../types';
 import {protectAuthResolver} from '../../utils/users';
+
+const IMAGE_DIR = `${process.cwd()}/uploads`;
 
 const editAccount = async (...payload: ResolverPayload) => {
   const [
@@ -10,8 +13,11 @@ const editAccount = async (...payload: ResolverPayload) => {
   ] = payload;
 
   const {filename, createReadStream} = await avatar;
-  const stream = createReadStream();
-  console.log(stream);
+  const filePath = `${IMAGE_DIR}/${filename}`;
+
+  const readStream = createReadStream();
+  const writeStream = fs.createWriteStream(filePath);
+  readStream.pipe(writeStream);
 
   if (!loggedInUser) {
     throw new Error();

@@ -105,3 +105,6 @@ dist
 
 # production
 /build
+
+# tmp images
+/uploads
