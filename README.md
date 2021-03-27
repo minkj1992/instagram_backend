@@ -14,9 +14,9 @@
 - [x] See Followers
 - [x] See Following
 - [ ] Search Users
-- [ ] Pagination Follows
-  - [x] offset pagination
-  - [ ] cursor pagination
+- [x] Pagination Follows
+  - [x] offset based pagination
+  - [x] cursor based pagination
 - [ ] Count Follows
 
 ## Project Set up
