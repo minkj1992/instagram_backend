@@ -15,10 +15,6 @@ const editAccount = async (...payload: ResolverPayload) => {
     {prisma, loggedInUser},
   ] = payload;
 
-  if (!loggedInUser) {
-    throw new Error();
-  }
-
   let avatarUrl;
   if (avatar) {
     const {filename, createReadStream} = await avatar;

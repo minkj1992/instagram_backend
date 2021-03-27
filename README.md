@@ -9,7 +9,8 @@
 - [x] See profile
 - [x] Edit profile
   - [x] Change Avatar (Image Upload)
-- [ ] Follow/Unfollow user
+- [x] Follow user
+- [ ] Unfollow User
 - [ ] Search Users
 - [ ] See Followers
 - [ ] See Following

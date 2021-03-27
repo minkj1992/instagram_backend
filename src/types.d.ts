@@ -3,7 +3,7 @@ import {PrismaClient, User} from '@prisma/client';
 
 type Context = {
   prisma: PrismaClient;
-  loggedInUser?: User;
+  loggedInUser: User;
 };
 
 export type ResolverPayload = [
