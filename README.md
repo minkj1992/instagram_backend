@@ -17,7 +17,7 @@
 - [x] Pagination Follows
   - [x] offset based pagination
   - [x] cursor based pagination
-- [ ] Count Follows
+- [x] Count Follows
 
 ## Project Set up
 
