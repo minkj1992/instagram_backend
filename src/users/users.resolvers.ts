@@ -22,10 +22,18 @@ const totalFollowers = ({id}, _, {prisma}) =>
     },
   });
 
+const isMe = ({id}, _, {loggedInUser}) => {
+  if (!loggedInUser) {
+    return false;
+  }
+  return id === loggedInUser.id;
+};
+
 const resolvers: Resolvers = {
   User: {
     totalFollowing,
     totalFollowers,
+    isMe,
   },
 };
 export default resolvers;
