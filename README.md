@@ -13,7 +13,7 @@
 - [x] Unfollow User
 - [x] See Followers
 - [x] See Following
-- [ ] Search Users
+- [x] Search Users
 - [x] Pagination Follows
   - [x] offset based pagination
   - [x] cursor based pagination

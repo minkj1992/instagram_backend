@@ -16,7 +16,7 @@ const seeFollowings = async (...payload: ResolverPayload) => {
     .findUnique({where: {username}})
     .following({
       take: pageSize,
-      skip: 1,
+      skip: lastId ? 1 : 0,
       ...(lastId && {cursor: {id: lastId}}),
     });
 
