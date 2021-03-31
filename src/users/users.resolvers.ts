@@ -1,4 +1,3 @@
-import {User} from '.prisma/client';
 import {Resolvers} from '../types';
 
 const totalFollowing = ({id}, _, {prisma}) =>

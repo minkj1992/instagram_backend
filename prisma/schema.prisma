@@ -32,10 +32,10 @@ model Photo {
   userId    Int
   image     String
   caption   String?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
   hashtags  Hashtag[]
   hashtagId Int?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Hashtag {
