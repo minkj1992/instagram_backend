@@ -25,7 +25,7 @@ const createAccount = async (...payload: ResolverPayload) => {
   if (existingUser) {
     return {
       ok: false,
-      error: `User already existed [${username}, ${email}] `,
+      error: `User already existed (username:${username}, email:${email})`,
     };
   }
 

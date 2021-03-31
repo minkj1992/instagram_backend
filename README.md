@@ -2,7 +2,7 @@
 
 > instagram_backend ver 2
 
-## Features for `User`
+## `User`
 
 - [x] Register
 - [x] Login
@@ -18,6 +18,17 @@
   - [x] offset based pagination
   - [x] cursor based pagination
 - [x] Count Follows
+
+## `Photos`
+
+- [ ] Upload Photo
+- [ ] Like / Unlike Photo
+- [ ] See Photo
+- [ ] Edit Photo
+- [ ] See Photo Likes
+- [ ] See Feed
+- [ ] Search Photos
+- [ ] See Hashtags
 
 ## Project Set up
 
