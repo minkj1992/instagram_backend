@@ -1,9 +1,10 @@
 import {ResolverPayload, Resolvers} from '../../types';
 import {protectAuthResolver} from '../../utils/users';
 
-const _parseCaptionHashtags = (caption: string) => {
-  return caption;
-};
+const _parseCaptionHashtags = (caption: string) => caption.match(/#[\w]+/g);
+
+const _getHashtagObjs = hashtags =>
+  hashtags?.map(tag => ({where: {tag}, create: {tag}}));
 
 const uploadPhoto = async ([
   _,
@@ -12,8 +13,24 @@ const uploadPhoto = async ([
 ]: ResolverPayload) => {
   if (caption) {
     const parsedHashtags = _parseCaptionHashtags(caption);
+    const hashtagObjs = _getHashtagObjs(parsedHashtags);
     if (parsedHashtags) {
-      // get or create Hashtag
+      return prisma.photo.create({
+        data: {
+          image,
+          caption,
+          user: {
+            connect: {
+              id: loggedInUser.id,
+            },
+          },
+          ...(hashtagObjs.length > 0 && {
+            hashtags: {
+              connectOrCreate: hashtagObjs,
+            },
+          }),
+        },
+      });
     }
     // create photo
     // add photo to hashtags
