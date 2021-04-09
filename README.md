@@ -30,6 +30,15 @@
 - [ ] Search Photos
 - [ ] See Hashtags
 
+## `Direct Message`
+> websocket + graphql
+
+- [x] See Room
+- [ ] Create Room
+- [ ] Get Room
+- [ ] Send Message
+- [ ] Realtime Messages
+
 ## Project Set up
 
 ```

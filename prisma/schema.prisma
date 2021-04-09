@@ -11,19 +11,21 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   firstName String
   lastName  String?
-  username  String   @unique
-  email     String   @unique
+  username  String    @unique
+  email     String    @unique
   password  String
   bio       String?
   avatar    String?
-  Photo     Photo[]
-  followers User[]   @relation("FollowRelation", references: [id])
-  following User[]   @relation("FollowRelation", references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  photos    Photo[]
+  followers User[]    @relation("FollowRelation", references: [id])
+  following User[]    @relation("FollowRelation", references: [id])
+  rooms     Room[]
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Photo {
@@ -42,6 +44,25 @@ model Hashtag {
   id        Int      @id @default(autoincrement())
   tag       String   @unique
   photos    Photo[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Room {
+  id        Int       @id @default(autoincrement())
+  users     User[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Message   Message[]
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  payload   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  room      Room     @relation(fields: [roomId], references: [id])
+  roomId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

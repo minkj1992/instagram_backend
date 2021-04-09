@@ -1,18 +1,20 @@
 import {gql} from 'apollo-server';
 
 export default gql`
-  type Message {
-    id: Int!
-    payload: String!
+  type Photo {
+    id: String!
     user: User!
-    room: Room!
+    image: String!
+    caption: String
+    hashtags: [Hashtag]!
     createdAt: String!
     updatedAt: String!
   }
-  type Room {
-    id: Int!
-    user: [User]
-    messages: [Messages]
+
+  type Hashtag {
+    id: String!
+    tag: String!
+    photos: [Photo]!
     createdAt: String!
     updatedAt: String!
   }
