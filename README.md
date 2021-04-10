@@ -34,9 +34,11 @@
 > websocket + graphql
 
 - [x] See Room
+- [x] Send Message
+- [ ] See Rooms
 - [ ] Create Room
 - [ ] Get Room
-- [ ] Send Message
+
 - [ ] Realtime Messages
 
 ## Project Set up
