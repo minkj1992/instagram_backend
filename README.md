@@ -35,10 +35,11 @@
 
 - [x] See Room
 - [x] Send Message
-- [ ] See Rooms
-- [ ] Create Room
+  - [x] Create Room
+- [x] See Rooms
+- [ ] message isSeen
+- [ ] count number of unread Messages
 - [ ] Get Room
-
 - [ ] Realtime Messages
 
 ## Project Set up
